@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arda ❤️ Begüm</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Arial',sans-serif;
+}
+body{
+background:linear-gradient(135deg,#ff4d6d,#ff758f);
+overflow-x:hidden;
+min-height:100vh;
+color:white;
+}
+.page{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+flex-direction:column;
+padding:20px;
+text-align:center;
+}
+.heart{
+font-size:120px;
+animation:beat 1s infinite;
+}
+@keyframes beat{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.15);}
+}
+input{
+padding:12px;
+border:none;
+border-radius:12px;
+width:260px;
+margin-top:20px;
+text-align:center;
+font-size:16px;
+}
+button{
+margin-top:15px;
+padding:12px 30px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+background:white;
+color:#ff4d6d;
+}
+#mainPage{
+display:none;
+}
+.letter{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+max-width:700px;
+margin:20px;
+animation:fade 1.5s ease;
+}
+@keyframes fade{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+.gallery{
+margin-top:25px;
+}
+.gallery img{
+width:300px;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.4);
+}
+.counter{
+margin-top:25px;
+font-size:24px;
+font-weight:bold;
+}
+.signature{
+margin-top:30px;
+font-size:28px;
+font-weight:bold;
+}
+.heart-float{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:floatUp linear infinite;
+pointer-events:none;
+}
+@keyframes floatUp{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+<div id="loginPage" class="page">
+<div class="heart">❤️</div>
+<h2>Parolayı Gir</h2>
+<input id="password" placeholder="10 Mayıs 2026">
+
+Giriş Yap
+
+</div>
+<div id="mainPage" class="page">
+<div class="letter">
+<h1>Seni Çok Seviyorum Hayatım ❤️</h1>
+<br>
+<p>
+Hayatıma geldiğin günden beri her şey daha güzel.
+Senin gülüşün, sesin ve varlığın bana her gün mutluluk veriyor.
+İyi ki varsın Begüm.
+</p>
+</div>
+<div class="gallery">
+<img id="slide" src="cocukluk.jpg">
+</div>
+<div class="counter">
+⏳ İlişkimizin Süresi
+<br><br>
+<span id="days"></span>
+</div>
+<div class="signature">
+Arda 💗 Begüm
+<br>
+Sonsuza Kadar ♾️
+</div>
+</div>
+<script>
+function login(){
+const pass=document.getElementById("password").value;
+if(pass==="10 Mayıs 2026"){
+document.getElementById("loginPage").style.display="none";
+document.getElementById("mainPage").style.display="flex";
+}
+else{
+alert("Şifremizi unutmuşsun aşkım ❤️");
+}
+}
+const photos=[
+"cocukluk.jpg",
+"semsiye.jpg",
+"guncel.jpg"
+];
+let index=0;
+setInterval(()=>{
+const img=document.getElementById("slide");
+if(img){
+index=(index+1)%photos.length;
+img.src=photos[index];
+}
+},4000);
+function updateCounter(){
+const start=new Date("2026-05-10T00:00:00");
+const now=new Date();
+const diff=now-start;
+const days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("days").innerHTML=
+days+" Gün ❤️";
+}
+setInterval(updateCounter,1000);
+updateCounter();
+function createHeart(){
+const heart=document.createElement("div");
+heart.className="heart-float";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=
+(4+Math.random()*6)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{
+heart.remove();
+},10000);
+}
+setInterval(createHeart,300);
+</script>
+</body>
+</html>
